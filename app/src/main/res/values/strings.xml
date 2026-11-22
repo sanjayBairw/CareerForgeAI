@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CareerForge AI</string>
+    <string name="app_tagline">Next-Gen AI Resume Builder &amp; Career Suite</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_my_resumes">My Resumes</string>
+    <string name="nav_templates">Templates</string>
+    <string name="nav_ai_tools">AI Tools</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Actions -->
+    <string name="create_new_resume">Create New Resume</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_preview">Preview</string>
+    <string name="action_export_pdf">Export PDF</string>
+    <string name="action_share">Share</string>
+    <string name="action_duplicate">Duplicate</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- ATS & AI -->
+    <string name="ats_score_label">ATS Compatibility Score</string>
+    <string name="ats_disclaimer">ATS analysis is heuristic and does not guarantee employer selection.</string>
+</resources>

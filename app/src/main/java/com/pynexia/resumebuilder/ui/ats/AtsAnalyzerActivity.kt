@@ -1,0 +1,150 @@
+package com.pynexia.resumebuilder.ui.ats
+
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.chip.Chip
+import com.google.gson.Gson
+import com.pynexia.resumebuilder.R
+import com.pynexia.resumebuilder.ai.AtsAnalyzer
+import com.pynexia.resumebuilder.data.model.ResumeData
+import com.pynexia.resumebuilder.data.model.ResumeEntity
+import com.pynexia.resumebuilder.databinding.ActivityAtsAnalyzerBinding
+import com.pynexia.resumebuilder.ui.resumes.ResumeViewModel
+import kotlinx.coroutines.launch
+
+class AtsAnalyzerActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityAtsAnalyzerBinding
+    private val viewModel: ResumeViewModel by viewModels()
+    private val gson = Gson()
+    private val analyzer = AtsAnalyzer()
+
+    private var resumeList: List<ResumeEntity> = emptyList()
+    private var selectedResume: ResumeEntity? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAtsAnalyzerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.toolbarAts.setNavigationOnClickListener { finish() }
+
+        loadResumes()
+        setupListeners()
+    }
+
+    private fun loadResumes() {
+        viewModel.allActiveResumes.observe(this) { list ->
+            resumeList = list
+            if (list.isNotEmpty()) {
+                val titles = list.map { "${it.title} (${it.targetJobTitle})" }
+                val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, titles)
+                binding.spinnerResumes.adapter = spinnerAdapter
+                selectedResume = list[0]
+
+                binding.spinnerResumes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        selectedResume = list[position]
+                    }
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                }
+
+                // Automatically run analysis on first resume
+                runAnalysis()
+            }
+        }
+    }
+
+    private fun setupListeners() {
+        binding.btnRunAtsAnalysis.setOnClickListener {
+            runAnalysis()
+        }
+    }
+
+    private fun runAnalysis() {
+        val entity = selectedResume ?: return
+        val resumeData = ResumeData.fromEntity(entity, gson)
+        val jdText = binding.etJobDescription.text?.toString().orEmpty()
+
+        val result = analyzer.analyze(resumeData, jdText)
+
+        // Update score in DB
+        entity.lastAtsScore = result.overallScore
+        viewModel.updateResume(entity)
+
+        // Display results
+        binding.cardAtsResults.visibility = View.VISIBLE
+        binding.tvAtsScoreNumber.text = "${result.overallScore}/100"
+        binding.tvAtsScoreRating.text = result.rating
+
+        if (result.overallScore >= 85) {
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#10B981"))
+        } else if (result.overallScore >= 70) {
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#F59E0B"))
+        } else {
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#EF4444"))
+        }
+
+        binding.tvReadabilityAndMetrics.text = "Readability: ${result.readabilityScore}% • Quantified Metric Bullets: ${result.quantifiedMetricsCount}"
+
+        // Matched Keywords Chips
+        binding.chipGroupMatchedKeywords.removeAllViews()
+        for (kw in result.matchedKeywords) {
+            val chip = Chip(this).apply {
+                text = kw
+                setTextColor(Color.parseColor("#059669"))
+                setChipBackgroundColorResource(R.color.accent_ats_light)
+            }
+            binding.chipGroupMatchedKeywords.addView(chip)
+        }
+        if (result.matchedKeywords.isEmpty()) {
+            val chip = Chip(this).apply { text = "Paste a target job description to match keywords" }
+            binding.chipGroupMatchedKeywords.addView(chip)
+        }
+
+        // Missing Keywords Chips
+        binding.chipGroupMissingKeywords.removeAllViews()
+        for (kw in result.missingKeywords) {
+            val chip = Chip(this).apply {
+                text = "+ $kw"
+                setTextColor(Color.parseColor("#DC2626"))
+                setChipBackgroundColorResource(R.color.accent_danger_light)
+            }
+            binding.chipGroupMissingKeywords.addView(chip)
+        }
+        if (result.missingKeywords.isEmpty()) {
+            val chip = Chip(this).apply { text = "No critical missing keywords detected" }
+            binding.chipGroupMissingKeywords.addView(chip)
+        }
+
+        // Section Breakdown
+        val sectionSb = StringBuilder()
+        for ((section, score) in result.sectionScores) {
+            sectionSb.append("• ").append(section).append(": ").append(score).append("%\n")
+        }
+        binding.tvSectionScores.text = sectionSb.toString().trimEnd()
+
+        // Recommendations
+        binding.layoutRecommendationsContainer.removeAllViews()
+        for (rec in result.recommendations) {
+            val recView = LayoutInflater.from(this).inflate(R.layout.item_ats_recommendation, binding.layoutRecommendationsContainer, false)
+            val tvTitle = recView.findViewById<TextView>(R.id.tv_rec_title)
+            val tvDesc = recView.findViewById<TextView>(R.id.tv_rec_desc)
+
+            tvTitle.text = "[${rec.severity}] ${rec.title}"
+            tvDesc.text = rec.description
+            binding.layoutRecommendationsContainer.addView(recView)
+        }
+
+        Toast.makeText(this, "ATS Score: ${result.overallScore}%", Toast.LENGTH_SHORT).show()
+    }
+}
