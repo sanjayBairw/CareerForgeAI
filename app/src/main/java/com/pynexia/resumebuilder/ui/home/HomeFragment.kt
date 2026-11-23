@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,9 +45,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupGreeting()
+        setupThemeToggle()
         setupRecyclerView()
         setupClickListeners()
         observeData()
+    }
+
+    private fun setupThemeToggle() {
+        val prefManager = (requireActivity().application as CareerForgeApp).preferenceManager
+        val isDark = prefManager.isDarkModeEnabled
+        binding.ivThemeToggleIcon.setImageResource(if (isDark) com.pynexia.resumebuilder.R.drawable.ic_light_mode else com.pynexia.resumebuilder.R.drawable.ic_dark_mode)
+        binding.btnThemeToggle.setOnClickListener {
+            val newDark = !prefManager.isDarkModeEnabled
+            prefManager.isDarkModeEnabled = newDark
+            AppCompatDelegate.setDefaultNightMode(
+                if (newDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }
     }
 
     private fun setupGreeting() {

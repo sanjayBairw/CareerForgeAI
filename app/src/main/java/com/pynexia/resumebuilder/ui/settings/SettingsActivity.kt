@@ -27,6 +27,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun loadSettings() {
+        binding.switchDarkMode.setOnCheckedChangeListener(null)
         binding.switchDarkMode.isChecked = prefManager.isDarkModeEnabled
         binding.etAiEndpoint.setText(prefManager.aiEndpointUrl)
         binding.etAiApiKey.setText(prefManager.aiApiKey)
@@ -34,13 +35,12 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchDarkMode.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (!buttonView.isPressed) return@setOnCheckedChangeListener
             prefManager.isDarkModeEnabled = isChecked
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
         }
 
         binding.btnSaveSettings.setOnClickListener {

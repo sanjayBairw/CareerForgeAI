@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.gson.Gson
@@ -35,6 +36,18 @@ class ProfileFragment : Fragment() {
         val pref = (requireActivity().application as CareerForgeApp).preferenceManager
         binding.tvProfileName.text = pref.userName
         binding.tvProfileEmail.text = pref.userEmail
+
+        val isDark = pref.isDarkModeEnabled
+        binding.switchDarkModeProfile.setOnCheckedChangeListener(null)
+        binding.switchDarkModeProfile.isChecked = isDark
+        binding.ivThemeIcon.setImageResource(if (isDark) com.pynexia.resumebuilder.R.drawable.ic_light_mode else com.pynexia.resumebuilder.R.drawable.ic_dark_mode)
+        binding.switchDarkModeProfile.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (!buttonView.isPressed) return@setOnCheckedChangeListener
+            pref.isDarkModeEnabled = isChecked
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
+        }
 
         val app = requireActivity().application as CareerForgeApp
         app.jobApplicationRepository.allApplications.observe(viewLifecycleOwner) { list ->

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.CareerForge" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Brand Colors -->
-        <item name="colorPrimary">#3B82F6</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorPrimaryContainer">#1E3A8A</item>
-        <item name="colorOnPrimaryContainer">#DBEAFE</item>
+        <!-- Brand Colors (Dark Mode) -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
 
-        <item name="colorSecondary">#E2E8F0</item>
-        <item name="colorOnSecondary">#0F172A</item>
-        <item name="colorSecondaryContainer">#1E293B</item>
-        <item name="colorOnSecondaryContainer">#F8FAFC</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
 
         <!-- Dark Background & Surface -->
-        <item name="android:colorBackground">#0B0F19</item>
-        <item name="colorSurface">#111827</item>
-        <item name="colorSurfaceVariant">#1E293B</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
 
-        <!-- Status & Navigation Bar -->
-        <item name="android:statusBarColor">#111827</item>
+        <!-- Status & Navigation Bar (Dark) -->
+        <item name="android:statusBarColor">@color/surface</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">#111827</item>
+        <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:windowLightNavigationBar">false</item>
 
         <!-- Bottom Navigation Style -->
@@ -32,13 +32,15 @@
         <item name="itemTextColor">@color/nav_item_color</item>
         <item name="elevation">8dp</item>
         <item name="labelVisibilityMode">labeled</item>
+        <item name="android:background">@color/surface</item>
     </style>
 
+    <!-- Professional Linear/Stripe Modern Cards in Dark Mode -->
     <style name="Widget.CareerForge.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">16dp</item>
-        <item name="strokeColor">#1E293B</item>
+        <item name="strokeColor">@color/stroke_light</item>
         <item name="strokeWidth">1dp</item>
-        <item name="cardBackgroundColor">#111827</item>
+        <item name="cardBackgroundColor">@color/surface_card</item>
     </style>
 </resources>
