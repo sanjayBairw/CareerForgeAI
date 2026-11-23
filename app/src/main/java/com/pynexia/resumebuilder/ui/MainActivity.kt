@@ -10,6 +10,7 @@ import com.pynexia.resumebuilder.ui.home.HomeFragment
 import com.pynexia.resumebuilder.ui.profile.ProfileFragment
 import com.pynexia.resumebuilder.ui.resumes.MyResumesFragment
 import com.pynexia.resumebuilder.ui.templates.TemplatesFragment
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.navHostFragment.applySystemBarsPadding(applyTop = true, applyBottom = false)
 
         if (savedInstanceState == null) {
             loadFragment(homeFragment)

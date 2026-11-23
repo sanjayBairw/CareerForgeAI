@@ -11,6 +11,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.pynexia.resumebuilder.CareerForgeApp
 import com.pynexia.resumebuilder.data.model.CoverLetterEntity
 import com.pynexia.resumebuilder.databinding.ActivityCoverLetterBinding
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.launch
 
 class CoverLetterActivity : AppCompatActivity() {
@@ -23,6 +24,8 @@ class CoverLetterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCoverLetterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         binding.toolbarCoverLetter.setNavigationOnClickListener { finish() }
 

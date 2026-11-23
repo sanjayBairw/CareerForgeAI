@@ -37,6 +37,7 @@ import com.pynexia.resumebuilder.databinding.StepSummaryBinding
 import com.pynexia.resumebuilder.pdf.TemplateRegistry
 import com.pynexia.resumebuilder.ui.preview.ResumePreviewActivity
 import com.pynexia.resumebuilder.ui.resumes.ResumeViewModel
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -74,6 +75,8 @@ class ResumeEditorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResumeEditorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         aiAssistant = AiResumeAssistant(this)
         resumeId = intent.getLongExtra(EXTRA_RESUME_ID, 0L)

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.pynexia.resumebuilder.CareerForgeApp
 import com.pynexia.resumebuilder.databinding.ActivitySettingsBinding
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         binding.toolbarSettings.setNavigationOnClickListener { finish() }
 

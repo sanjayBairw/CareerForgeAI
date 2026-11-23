@@ -11,6 +11,7 @@ import com.pynexia.resumebuilder.data.model.ResumeData
 import com.pynexia.resumebuilder.data.model.ResumeEntity
 import com.pynexia.resumebuilder.databinding.ActivityResumeComparisonBinding
 import com.pynexia.resumebuilder.ui.resumes.ResumeViewModel
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 
 class ResumeComparisonActivity : AppCompatActivity() {
 
@@ -26,6 +27,8 @@ class ResumeComparisonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResumeComparisonBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         binding.toolbarCompare.setNavigationOnClickListener { finish() }
 

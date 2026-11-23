@@ -18,6 +18,7 @@ import com.pynexia.resumebuilder.pdf.PdfPreviewManager
 import com.pynexia.resumebuilder.pdf.TemplateRegistry
 import com.pynexia.resumebuilder.ui.editor.ResumeEditorActivity
 import com.pynexia.resumebuilder.ui.resumes.ResumeViewModel
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -40,6 +41,8 @@ class ResumePreviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResumePreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         resumeId = intent.getLongExtra(EXTRA_RESUME_ID, 0L)
 

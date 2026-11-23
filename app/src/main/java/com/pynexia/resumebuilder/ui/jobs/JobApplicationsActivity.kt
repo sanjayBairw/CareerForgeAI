@@ -10,6 +10,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.pynexia.resumebuilder.CareerForgeApp
 import com.pynexia.resumebuilder.data.model.JobApplicationEntity
 import com.pynexia.resumebuilder.databinding.ActivityJobApplicationsBinding
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.launch
 
 class JobApplicationsActivity : AppCompatActivity() {
@@ -23,6 +24,8 @@ class JobApplicationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityJobApplicationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         binding.toolbarJobs.setNavigationOnClickListener { finish() }
 

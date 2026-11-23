@@ -19,6 +19,7 @@ import com.pynexia.resumebuilder.data.model.ResumeData
 import com.pynexia.resumebuilder.data.model.ResumeEntity
 import com.pynexia.resumebuilder.databinding.ActivityAtsAnalyzerBinding
 import com.pynexia.resumebuilder.ui.resumes.ResumeViewModel
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.launch
 
 class AtsAnalyzerActivity : AppCompatActivity() {
@@ -30,11 +31,14 @@ class AtsAnalyzerActivity : AppCompatActivity() {
 
     private var resumeList: List<ResumeEntity> = emptyList()
     private var selectedResume: ResumeEntity? = null
+    private var isInitialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAtsAnalyzerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         binding.toolbarAts.setNavigationOnClickListener { finish() }
 
@@ -44,42 +48,54 @@ class AtsAnalyzerActivity : AppCompatActivity() {
 
     private fun loadResumes() {
         viewModel.allActiveResumes.observe(this) { list ->
+            if (list.isEmpty()) return@observe
+            val listChanged = resumeList.map { it.id } != list.map { it.id }
             resumeList = list
-            if (list.isNotEmpty()) {
+
+            if (!isInitialized || listChanged) {
+                isInitialized = true
                 val titles = list.map { "${it.title} (${it.targetJobTitle})" }
                 val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, titles)
                 binding.spinnerResumes.adapter = spinnerAdapter
                 selectedResume = list[0]
 
-                binding.spinnerResumes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        selectedResume = list[position]
-                    }
-                    override fun onNothingSelected(parent: AdapterView<*>?) {}
-                }
-
-                // Automatically run analysis on first resume
-                runAnalysis()
+                // Run initial analysis without triggering DB update recursion
+                runAnalysis(saveToDb = false)
             }
         }
     }
 
     private fun setupListeners() {
+        binding.spinnerResumes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position in resumeList.indices) {
+                    val candidate = resumeList[position]
+                    if (selectedResume?.id != candidate.id) {
+                        selectedResume = candidate
+                        runAnalysis(saveToDb = false)
+                    }
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
         binding.btnRunAtsAnalysis.setOnClickListener {
-            runAnalysis()
+            runAnalysis(saveToDb = true)
         }
     }
 
-    private fun runAnalysis() {
+    private fun runAnalysis(saveToDb: Boolean = false) {
         val entity = selectedResume ?: return
         val resumeData = ResumeData.fromEntity(entity, gson)
         val jdText = binding.etJobDescription.text?.toString().orEmpty()
 
         val result = analyzer.analyze(resumeData, jdText)
 
-        // Update score in DB
-        entity.lastAtsScore = result.overallScore
-        viewModel.updateResume(entity)
+        // Update score in DB only when explicitly requested and changed
+        if (saveToDb && entity.lastAtsScore != result.overallScore) {
+            entity.lastAtsScore = result.overallScore
+            viewModel.updateResume(entity)
+        }
 
         // Display results
         binding.cardAtsResults.visibility = View.VISIBLE
@@ -145,6 +161,8 @@ class AtsAnalyzerActivity : AppCompatActivity() {
             binding.layoutRecommendationsContainer.addView(recView)
         }
 
-        Toast.makeText(this, "ATS Score: ${result.overallScore}%", Toast.LENGTH_SHORT).show()
+        if (saveToDb) {
+            Toast.makeText(this, "Analysis updated (Score: ${result.overallScore}%)", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -9,6 +9,7 @@ import com.pynexia.resumebuilder.CareerForgeApp
 import com.pynexia.resumebuilder.ai.AiResumeAssistant
 import com.pynexia.resumebuilder.data.model.CoverLetterEntity
 import com.pynexia.resumebuilder.databinding.ActivityCoverLetterEditorBinding
+import com.pynexia.resumebuilder.utils.applySystemBarsPadding
 import kotlinx.coroutines.launch
 
 class CoverLetterEditorActivity : AppCompatActivity() {
@@ -23,6 +24,8 @@ class CoverLetterEditorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCoverLetterEditorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applySystemBarsPadding(applyTop = true, applyBottom = true)
 
         aiAssistant = AiResumeAssistant(this)
         coverLetterId = intent.getLongExtra(EXTRA_CL_ID, 0L)
