@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Brand Primary & Tones -->
-    <color name="primary">#2563EB</color>
-    <color name="primary_variant">#1D4ED8</color>
+    <!-- Brand Primary & Tones: Modern Executive Obsidian & Electric Sapphire -->
+    <color name="primary">#1D4ED8</color>
+    <color name="primary_variant">#1E3A8A</color>
     <color name="on_primary">#FFFFFF</color>
-    <color name="primary_container">#DBEAFE</color>
-    <color name="on_primary_container">#1E3A8A</color>
+    <color name="primary_container">#EFF6FF</color>
+    <color name="on_primary_container">#1E40AF</color>
 
-    <!-- Secondary & Tones -->
+    <!-- Secondary & Tones: Deep Obsidian Navy -->
     <color name="secondary">#0F172A</color>
-    <color name="secondary_variant">#334155</color>
+    <color name="secondary_variant">#1E293B</color>
     <color name="on_secondary">#FFFFFF</color>
-    <color name="secondary_container">#F1F5F9</color>
+    <color name="secondary_container">#F8FAFC</color>
     <color name="on_secondary_container">#0F172A</color>
 
-    <!-- Accent Highlights -->
-    <color name="accent_ai">#8B5CF6</color>
-    <color name="accent_ai_light">#EDE9FE</color>
-    <color name="accent_ats">#10B981</color>
-    <color name="accent_ats_light">#D1FAE5</color>
-    <color name="accent_warning">#F59E0B</color>
-    <color name="accent_warning_light">#FEF3C7</color>
-    <color name="accent_danger">#EF4444</color>
-    <color name="accent_danger_light">#FEE2E2</color>
+    <!-- Refined Accent Highlights -->
+    <color name="accent_ai">#6366F1</color>
+    <color name="accent_ai_light">#EEF2FF</color>
+    <color name="accent_ats">#059669</color>
+    <color name="accent_ats_light">#ECFDF5</color>
+    <color name="accent_warning">#D97706</color>
+    <color name="accent_warning_light">#FFFBEB</color>
+    <color name="accent_danger">#DC2626</color>
+    <color name="accent_danger_light">#FEF2F2</color>
 
-    <!-- Backgrounds & Surfaces (Light) -->
+    <!-- Backgrounds & Surfaces (Light - Modern Ultra-Clean Slate) -->
     <color name="background">#F8FAFC</color>
     <color name="surface">#FFFFFF</color>
     <color name="surface_variant">#F1F5F9</color>
     <color name="surface_card">#FFFFFF</color>
     <color name="divider">#E2E8F0</color>
-    <color name="stroke_light">#CBD5E1</color>
+    <color name="stroke_light">#E2E8F0</color>
 
-    <!-- Text Colors (Light) -->
+    <!-- Text Colors (Slate System) -->
     <color name="text_primary">#0F172A</color>
     <color name="text_secondary">#475569</color>
     <color name="text_tertiary">#94A3B8</color>
     <color name="text_hint">#94A3B8</color>
 
-    <!-- Status Colors -->
-    <color name="status_interested">#38BDF8</color>
-    <color name="status_applied">#3B82F6</color>
-    <color name="status_assessment">#A855F7</color>
-    <color name="status_interview">#F59E0B</color>
-    <color name="status_offer">#10B981</color>
-    <color name="status_rejected">#EF4444</color>
+    <!-- Status Colors for Job Tracker -->
+    <color name="status_interested">#0284C7</color>
+    <color name="status_applied">#2563EB</color>
+    <color name="status_assessment">#7C3AED</color>
+    <color name="status_interview">#D97706</color>
+    <color name="status_offer">#059669</color>
+    <color name="status_rejected">#DC2626</color>
 
     <!-- Template Palette Presets -->
-    <color name="theme_blue">#2563EB</color>
+    <color name="theme_blue">#1D4ED8</color>
     <color name="theme_emerald">#059669</color>
-    <color name="theme_purple">#7C3AED</color>
-    <color name="theme_crimson">#DC2626</color>
+    <color name="theme_purple">#6D28D9</color>
+    <color name="theme_crimson">#B91C1C</color>
     <color name="theme_slate">#0F172A</color>
-    <color name="theme_amber">#D97706</color>
+    <color name="theme_amber">#B45309</color>
 </resources>

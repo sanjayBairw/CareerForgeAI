@@ -17,11 +17,21 @@
         <item name="colorSurface">@color/surface</item>
         <item name="colorSurfaceVariant">@color/surface_variant</item>
 
-        <!-- Status & Navigation Bar -->
-        <item name="android:statusBarColor">@color/background</item>
+        <!-- Status & Navigation Bar: Clean, Seamless Apple/Material3 styling -->
+        <item name="android:statusBarColor">@color/surface</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Bottom Navigation Style -->
+        <item name="bottomNavigationStyle">@style/Widget.CareerForge.BottomNavigation</item>
+    </style>
+
+    <style name="Widget.CareerForge.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="elevation">8dp</item>
+        <item name="labelVisibilityMode">labeled</item>
     </style>
 
     <style name="ShapeAppearance.Corner.Medium" parent="ShapeAppearance.Material3.MediumComponent">
@@ -32,8 +42,9 @@
         <item name="cornerSize">24dp</item>
     </style>
 
+    <!-- Professional Linear/Stripe Modern Cards: Crisp hairline stroke, zero muddy drop-shadow -->
     <style name="Widget.CareerForge.Card" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardElevation">2dp</item>
+        <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="strokeColor">@color/stroke_light</item>
         <item name="strokeWidth">1dp</item>

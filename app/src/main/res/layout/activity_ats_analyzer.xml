@@ -113,8 +113,13 @@
                         android:id="@+id/tv_ats_score_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge_ats"
+                        android:paddingStart="24dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="6dp"
                         android:textColor="@color/accent_ats"
-                        android:textSize="48sp"
+                        android:textSize="36sp"
                         android:textStyle="bold"
                         tools:text="92/100" />
 

@@ -103,11 +103,14 @@ class AtsAnalyzerActivity : AppCompatActivity() {
         binding.tvAtsScoreRating.text = result.rating
 
         if (result.overallScore >= 85) {
-            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#10B981"))
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#059669"))
+            binding.tvAtsScoreNumber.setBackgroundResource(R.drawable.bg_badge_ats)
         } else if (result.overallScore >= 70) {
-            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#F59E0B"))
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#D97706"))
+            binding.tvAtsScoreNumber.setBackgroundResource(R.drawable.bg_badge_warning)
         } else {
-            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#EF4444"))
+            binding.tvAtsScoreNumber.setTextColor(Color.parseColor("#DC2626"))
+            binding.tvAtsScoreNumber.setBackgroundResource(R.drawable.bg_badge_neutral)
         }
 
         binding.tvReadabilityAndMetrics.text = "Readability: ${result.readabilityScore}% • Quantified Metric Bullets: ${result.quantifiedMetricsCount}"

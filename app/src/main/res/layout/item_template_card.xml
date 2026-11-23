@@ -35,7 +35,7 @@
                 android:id="@+id/tv_template_ats_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_card_pill"
+                android:background="@drawable/bg_badge_ats"
                 android:paddingStart="8dp"
                 android:paddingTop="3dp"
                 android:paddingEnd="8dp"
@@ -73,38 +73,43 @@
 
             <View
                 android:id="@+id/color_dot_blue"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="10dp"
-                android:background="@color/theme_blue" />
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_blue" />
 
             <View
                 android:id="@+id/color_dot_emerald"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/theme_emerald" />
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_emerald" />
 
             <View
                 android:id="@+id/color_dot_purple"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/theme_purple" />
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_purple" />
 
             <View
                 android:id="@+id/color_dot_crimson"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/theme_crimson" />
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_crimson" />
 
             <View
                 android:id="@+id/color_dot_slate"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/theme_slate" />
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_slate" />
 
             <View
                 android:layout_width="0dp"
