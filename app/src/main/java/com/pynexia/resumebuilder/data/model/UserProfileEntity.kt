@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 data class UserProfileEntity(
     @PrimaryKey
     val id: Int = 1,
-    var fullName: String = "Alex Johnson",
-    var email: String = "alex.johnson@example.com",
-    var phone: String = "+1 (555) 019-2834",
-    var headline: String = "Senior Full Stack & Mobile Engineer",
+    var fullName: String = "",
+    var email: String = "",
+    var phone: String = "",
+    var headline: String = "",
     var photoUri: String? = null,
-    var isLoggedIn: Boolean = true,
+    var isLoggedIn: Boolean = false,
     var authProvider: String = "LOCAL",
     var lastSyncTime: Long = System.currentTimeMillis()
 )

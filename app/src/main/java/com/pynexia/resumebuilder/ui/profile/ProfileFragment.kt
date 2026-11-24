@@ -37,12 +37,20 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val pref = (requireActivity().application as CareerForgeApp).preferenceManager
+        binding.tvProfileName.text = if (pref.userName.isNotBlank()) pref.userName else "Set Up Your Profile"
+        binding.tvProfileHeadline.text = if (pref.userHeadline.isNotBlank()) pref.userHeadline else "Tap to add your professional role"
+        binding.tvProfileEmail.text = if (pref.userEmail.isNotBlank()) pref.userEmail else "Tap to add your contact details"
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val pref = (requireActivity().application as CareerForgeApp).preferenceManager
-        binding.tvProfileName.text = pref.userName
-        binding.tvProfileHeadline.text = pref.userHeadline
-        binding.tvProfileEmail.text = pref.userEmail
+        binding.tvProfileName.text = if (pref.userName.isNotBlank()) pref.userName else "Set Up Your Profile"
+        binding.tvProfileHeadline.text = if (pref.userHeadline.isNotBlank()) pref.userHeadline else "Tap to add your professional role"
+        binding.tvProfileEmail.text = if (pref.userEmail.isNotBlank()) pref.userEmail else "Tap to add your contact details"
 
         binding.cardUserInfo.setOnClickListener { showEditProfileDialog() }
         binding.btnEditProfile.setOnClickListener { showEditProfileDialog() }

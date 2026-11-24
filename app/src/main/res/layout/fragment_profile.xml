@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -57,7 +58,8 @@
                         android:id="@+id/tv_profile_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alex Johnson"
+                        android:text="Set Up Your Profile"
+                        tools:text="Your Name"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp"
                         android:textStyle="bold" />
@@ -67,7 +69,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Lead Mobile Architect"
+                        android:text="Tap to add your professional role"
+                        tools:text="Software Engineer"
                         android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
 
@@ -76,7 +79,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="alex.johnson@pynexia.io"
+                        android:text="Tap to add your contact details"
+                        tools:text="your.email@example.com"
                         android:textColor="@color/text_tertiary"
                         android:textSize="12sp" />
                 </LinearLayout>

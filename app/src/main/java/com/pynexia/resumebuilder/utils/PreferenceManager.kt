@@ -23,20 +23,45 @@ class PreferenceManager(context: Context) {
         get() = prefs.getString(KEY_AI_MODEL, "gpt-4o-mini") ?: "gpt-4o-mini"
         set(value) = prefs.edit().putString(KEY_AI_MODEL, value).apply()
 
+    var isProfileSetup: Boolean
+        get() = prefs.getBoolean(KEY_PROFILE_SETUP, false)
+        set(value) = prefs.edit().putBoolean(KEY_PROFILE_SETUP, value).apply()
+
     var userName: String
-        get() = prefs.getString(KEY_USER_NAME, "Alex Johnson") ?: "Alex Johnson"
+        get() {
+            val name = prefs.getString(KEY_USER_NAME, "") ?: ""
+            if (name == "Alex Johnson") {
+                prefs.edit().remove(KEY_USER_NAME).putBoolean(KEY_PROFILE_SETUP, false).apply()
+                return ""
+            }
+            return name
+        }
         set(value) = prefs.edit().putString(KEY_USER_NAME, value).apply()
 
     var userHeadline: String
-        get() = prefs.getString(KEY_USER_HEADLINE, "Lead Mobile Architect") ?: "Lead Mobile Architect"
+        get() {
+            val h = prefs.getString(KEY_USER_HEADLINE, "") ?: ""
+            if (h == "Lead Mobile Architect") {
+                prefs.edit().remove(KEY_USER_HEADLINE).apply()
+                return ""
+            }
+            return h
+        }
         set(value) = prefs.edit().putString(KEY_USER_HEADLINE, value).apply()
 
     var userEmail: String
-        get() = prefs.getString(KEY_USER_EMAIL, "alex.johnson@pynexia.io") ?: "alex.johnson@pynexia.io"
+        get() {
+            val e = prefs.getString(KEY_USER_EMAIL, "") ?: ""
+            if (e.contains("alex.johnson")) {
+                prefs.edit().remove(KEY_USER_EMAIL).apply()
+                return ""
+            }
+            return e
+        }
         set(value) = prefs.edit().putString(KEY_USER_EMAIL, value).apply()
 
     var userPhone: String
-        get() = prefs.getString(KEY_USER_PHONE, "+1 (555) 019-2834") ?: "+1 (555) 019-2834"
+        get() = prefs.getString(KEY_USER_PHONE, "") ?: ""
         set(value) = prefs.edit().putString(KEY_USER_PHONE, value).apply()
 
     var isOnboardingCompleted: Boolean
@@ -44,6 +69,7 @@ class PreferenceManager(context: Context) {
         set(value) = prefs.edit().putBoolean(KEY_ONBOARDING_DONE, value).apply()
 
     companion object {
+        private const val KEY_PROFILE_SETUP = "key_profile_setup"
         private const val KEY_DARK_MODE = "key_dark_mode"
         private const val KEY_AI_API_KEY = "key_ai_api_key"
         private const val KEY_AI_ENDPOINT = "key_ai_endpoint"

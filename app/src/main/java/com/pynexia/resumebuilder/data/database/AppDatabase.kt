@@ -79,11 +79,11 @@ abstract class AppDatabase : RoomDatabase() {
             // 1. User Profile
             val profile = UserProfileEntity(
                 id = 1,
-                fullName = "Alex Johnson",
-                email = "alex.johnson@pynexia.io",
-                phone = "+1 (415) 890-4321",
-                headline = "Lead Mobile Architect & Full-Stack Specialist",
-                isLoggedIn = true,
+                fullName = "",
+                email = "",
+                phone = "",
+                headline = "",
+                isLoggedIn = false,
                 authProvider = "LOCAL",
                 lastSyncTime = System.currentTimeMillis()
             )
@@ -102,14 +102,14 @@ abstract class AppDatabase : RoomDatabase() {
                 layoutColumns = 2,
                 lastAtsScore = 92,
                 personalInfo = PersonalInfo(
-                    fullName = "Alex Johnson",
+                    fullName = "Candidate Name",
                     headline = "Lead Mobile & Distributed Systems Architect",
-                    email = "alex.johnson@pynexia.io",
-                    phone = "+1 (415) 890-4321",
+                    email = "candidate@example.com",
+                    phone = "+1 (555) 019-2834",
                     location = "San Francisco, CA (Remote)",
-                    linkedInUrl = "https://linkedin.com/in/alex-johnson-dev",
-                    githubUrl = "https://github.com/alex-dev",
-                    portfolioUrl = "https://alexjohnson.dev"
+                    linkedInUrl = "https://linkedin.com/in/candidate",
+                    githubUrl = "https://github.com/candidate",
+                    portfolioUrl = "https://candidate.dev"
                 ),
                 summary = "Results-driven Lead Systems Architect with 8+ years architecting high-scale distributed applications and mission-critical Android solutions serving 15M+ active users. Proven track record boosting cloud throughput by 42% and slashing p99 latency by 35% through reactive architectures and modern caching paradigms.",
                 educationList = mutableListOf(
@@ -201,7 +201,7 @@ abstract class AppDatabase : RoomDatabase() {
                         description = "Recognized for designing zero-downtime offline migration pipeline."
                     )
                 ),
-                qrCodeContent = "https://linkedin.com/in/alex-johnson-dev"
+                qrCodeContent = "https://linkedin.com/in/candidate"
             )
 
             // 3. Sample Resume 2: Product & Growth Lead
@@ -273,8 +273,8 @@ abstract class AppDatabase : RoomDatabase() {
                 salutation = "Dear Ms. Vance and the Apex Engineering Team,",
                 bodyText = "I am writing to express my strong interest in the Staff Android Systems Architect position at Apex Solutions Global. Having followed Apex's groundbreaking initiatives in edge computing and distributed mobile synchronization, I was thrilled to see this opening for someone with deep expertise in scalable mobile architectures.\n\nOver the past eight years, I have led teams delivering high-volume Android platforms serving tens of millions of daily active users. At Apex Cloud Technologies, I spearheaded our reactive caching engine, which reduced p99 latency by 35% while cutting battery consumption across our entire mobile footprint. My approach couples rigorous code craft with business acumen, ensuring robust architectures that accelerate product velocity.\n\nI would welcome the opportunity to discuss how my technical leadership and background in high-concurrency systems can help Apex exceed its 2027 technical objectives. Thank you for your time and consideration.",
                 signOff = "Sincerely,",
-                senderName = "Alex Johnson",
-                senderContact = "alex.johnson@pynexia.io | +1 (415) 890-4321",
+                senderName = "Candidate Name",
+                senderContact = "candidate@example.com | +1 (555) 019-2834",
                 templateId = "modern"
             )
             database.coverLetterDao().insert(coverLetter)

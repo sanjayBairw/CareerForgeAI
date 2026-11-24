@@ -30,7 +30,7 @@
                     android:id="@+id/tv_greeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome Back"
+                    android:text="Welcome"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
 
@@ -38,7 +38,8 @@
                     android:id="@+id/tv_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alex Johnson"
+                    android:text="Your Career Hub"
+                    tools:text="Your Name"
                     android:textColor="@color/text_primary"
                     android:textSize="22sp"
                     android:textStyle="bold" />

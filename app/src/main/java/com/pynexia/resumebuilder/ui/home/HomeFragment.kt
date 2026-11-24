@@ -5,13 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pynexia.resumebuilder.CareerForgeApp
+import com.pynexia.resumebuilder.data.model.UserProfileEntity
+import kotlinx.coroutines.launch
 import com.pynexia.resumebuilder.data.model.PersonalInfo
 import com.pynexia.resumebuilder.data.model.ResumeData
 import com.pynexia.resumebuilder.data.model.ResumeEntity
@@ -49,6 +54,13 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         observeData()
+
+        val prefManager = (requireActivity().application as CareerForgeApp).preferenceManager
+        if (!prefManager.isProfileSetup) {
+            view.post {
+                showFirstTimeProfileSetupDialog()
+            }
+        }
     }
 
     private fun setupThemeToggle() {
@@ -72,15 +84,85 @@ class HomeFragment : Fragment() {
     private fun setupGreeting() {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val greeting = when {
+        val timeGreeting = when {
             hour < 12 -> "Good Morning,"
             hour < 17 -> "Good Afternoon,"
             else -> "Good Evening,"
         }
-        binding.tvGreeting.text = greeting
 
         val prefManager = (requireActivity().application as CareerForgeApp).preferenceManager
-        binding.tvUserName.text = prefManager.userName
+        if (prefManager.userName.isNotBlank()) {
+            binding.tvGreeting.text = timeGreeting
+            binding.tvUserName.text = prefManager.userName
+        } else {
+            binding.tvGreeting.text = "Welcome to CareerForge"
+            binding.tvUserName.text = "Tap to Set Up Profile 👋"
+        }
+    }
+
+    private fun showFirstTimeProfileSetupDialog() {
+        val prefManager = (requireActivity().application as CareerForgeApp).preferenceManager
+        val context = requireContext()
+
+        val layout = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            val pad = (20 * resources.displayMetrics.density).toInt()
+            setPadding(pad, pad / 2, pad, 0)
+        }
+
+        val etName = EditText(context).apply {
+            hint = "Full Name (e.g. Your Name)"
+            setText(prefManager.userName)
+        }
+        val etHeadline = EditText(context).apply {
+            hint = "Target Role / Headline (e.g. Software Engineer)"
+            setText(prefManager.userHeadline)
+        }
+        val etEmail = EditText(context).apply {
+            hint = "Email Address (optional)"
+            setText(prefManager.userEmail)
+        }
+
+        layout.addView(etName)
+        layout.addView(etHeadline)
+        layout.addView(etEmail)
+
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Set Up Your Profile 👋")
+            .setMessage("Personalize CareerForge for your career journey. Your name and target role will customize your dashboard and pre-fill resumes.")
+            .setView(layout)
+            .setPositiveButton("Get Started") { _, _ ->
+                val name = etName.text.toString().trim()
+                val headline = etHeadline.text.toString().trim()
+                val email = etEmail.text.toString().trim()
+
+                prefManager.userName = if (name.isNotBlank()) name else "Job Seeker"
+                prefManager.userHeadline = if (headline.isNotBlank()) headline else "Professional"
+                if (email.isNotBlank()) prefManager.userEmail = email
+                prefManager.isProfileSetup = true
+
+                setupGreeting()
+
+                val app = requireActivity().application as CareerForgeApp
+                lifecycleScope.launch {
+                    app.userRepository.saveProfile(
+                        UserProfileEntity(
+                            id = 1,
+                            fullName = prefManager.userName,
+                            headline = prefManager.userHeadline,
+                            email = prefManager.userEmail,
+                            phone = prefManager.userPhone,
+                            isLoggedIn = true
+                        )
+                    )
+                }
+                Toast.makeText(context, "Welcome, ${prefManager.userName}!", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Skip") { _, _ ->
+                prefManager.isProfileSetup = true
+                setupGreeting()
+            }
+            .show()
     }
 
     private fun setupRecyclerView() {
@@ -99,6 +181,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
+        binding.tvUserName.setOnClickListener { showFirstTimeProfileSetupDialog() }
+        binding.tvGreeting.setOnClickListener { showFirstTimeProfileSetupDialog() }
+        binding.ivProfileAvatar.setOnClickListener { showFirstTimeProfileSetupDialog() }
+
         binding.btnCreateResume.setOnClickListener {
             createNewResume()
         }
