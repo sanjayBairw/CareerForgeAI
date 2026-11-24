@@ -22,10 +22,13 @@
 
         <!-- User Information Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_user_info"
             style="@style/Widget.CareerForge.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,6 +80,15 @@
                         android:textColor="@color/text_tertiary"
                         android:textSize="12sp" />
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/primary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

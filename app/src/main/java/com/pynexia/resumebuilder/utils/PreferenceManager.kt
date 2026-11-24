@@ -27,9 +27,17 @@ class PreferenceManager(context: Context) {
         get() = prefs.getString(KEY_USER_NAME, "Alex Johnson") ?: "Alex Johnson"
         set(value) = prefs.edit().putString(KEY_USER_NAME, value).apply()
 
+    var userHeadline: String
+        get() = prefs.getString(KEY_USER_HEADLINE, "Lead Mobile Architect") ?: "Lead Mobile Architect"
+        set(value) = prefs.edit().putString(KEY_USER_HEADLINE, value).apply()
+
     var userEmail: String
         get() = prefs.getString(KEY_USER_EMAIL, "alex.johnson@pynexia.io") ?: "alex.johnson@pynexia.io"
         set(value) = prefs.edit().putString(KEY_USER_EMAIL, value).apply()
+
+    var userPhone: String
+        get() = prefs.getString(KEY_USER_PHONE, "+1 (555) 019-2834") ?: "+1 (555) 019-2834"
+        set(value) = prefs.edit().putString(KEY_USER_PHONE, value).apply()
 
     var isOnboardingCompleted: Boolean
         get() = prefs.getBoolean(KEY_ONBOARDING_DONE, true)
@@ -41,7 +49,9 @@ class PreferenceManager(context: Context) {
         private const val KEY_AI_ENDPOINT = "key_ai_endpoint"
         private const val KEY_AI_MODEL = "key_ai_model"
         private const val KEY_USER_NAME = "key_user_name"
+        private const val KEY_USER_HEADLINE = "key_user_headline"
         private const val KEY_USER_EMAIL = "key_user_email"
+        private const val KEY_USER_PHONE = "key_user_phone"
         private const val KEY_ONBOARDING_DONE = "key_onboarding_done"
     }
 }
