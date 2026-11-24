@@ -12,10 +12,8 @@
 ---
 
 ## 📸 Visual Showcase
-
-| Home Dashboard (Executive UI) | ATS Resume Analyzer | Vector PDF Preview |
-| :---: | :---: | :---: |
-| <img src="docs/screenshots/01_home_executive_theme.png" width="260"/> | <img src="docs/screenshots/02_ats_executive_theme.png" width="260"/> | <img src="docs/screenshots/02_pdf_preview.png" width="260"/> |
+ | ATS Resume Analyzer | Vector PDF Preview |
+| :---: | :---: | :---: | | <img src="docs/screenshots/02_ats_executive_theme.png" width="260"/> | <img src="docs/screenshots/02_pdf_preview.png" width="260"/> |
 
 | Live Resume Editor | Templates Gallery | Job Application Tracker |
 | :---: | :---: | :---: |
