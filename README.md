@@ -12,12 +12,14 @@
 ---
 
 ## 📸 Visual Showcase
- | ATS Resume Analyzer | Vector PDF Preview |
-| :---: | :---: | :---: | | <img src="docs/screenshots/02_ats_executive_theme.png" width="260"/> | <img src="docs/screenshots/02_pdf_preview.png" width="260"/> |
 
-| Live Resume Editor | Templates Gallery | Job Application Tracker |
+| ATS Resume Analyzer | Vector PDF Preview | Live Resume Editor |
 | :---: | :---: | :---: |
-| <img src="docs/screenshots/03_resume_editor.png" width="260"/> | <img src="docs/screenshots/06_templates_gallery.png" width="260"/> | <img src="docs/screenshots/07_job_tracker.png" width="260"/> |
+| <img src="docs/screenshots/02_ats_executive_theme.png" width="260"/> | <img src="docs/screenshots/02_pdf_preview.png" width="260"/> | <img src="docs/screenshots/03_resume_editor.png" width="260"/> |
+
+| Templates Gallery | Job Application Tracker | AI Interview Prep |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/06_templates_gallery.png" width="260"/> | <img src="docs/screenshots/07_job_tracker.png" width="260"/> | <img src="docs/screenshots/09_ai_interview_prep.png" width="260"/> |
 
 ---
 
@@ -115,8 +117,8 @@ com.pynexia.resumebuilder/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/careerforge-ai.git
-cd careerforge-ai
+git clone https://github.com/sanjayBairw/CareerForgeAI.git
+cd CareerForgeAI
 
 # Build the debug APK
 ./gradlew assembleDebug
