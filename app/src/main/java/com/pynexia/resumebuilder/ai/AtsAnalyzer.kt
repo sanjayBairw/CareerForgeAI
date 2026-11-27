@@ -29,6 +29,8 @@ class AtsAnalyzer {
         "experience", "years", "role", "looking", "team", "strong", "skills", "ability", "required"
     )
 
+    private val emailRegex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+
     private val powerActionVerbs = listOf(
         "architected", "engineered", "spearheaded", "orchestrated", "developed",
         "optimized", "deployed", "implemented", "scaled", "streamlined", "accelerated",
@@ -44,7 +46,7 @@ class AtsAnalyzer {
         var contactScore = 0
         val personal = resume.personalInfo
         if (personal.fullName.isNotBlank()) contactScore += 3
-        if (android.util.Patterns.EMAIL_ADDRESS.matcher(personal.email).matches()) {
+        if (personal.email.isNotBlank() && emailRegex.matches(personal.email.trim())) {
             contactScore += 4
         } else {
             recommendations.add(AtsRecommendation("Valid Email Required", "Add a professionally formatted email address for ATS parser verification.", "CRITICAL"))
@@ -102,8 +104,9 @@ class AtsAnalyzer {
                 }
                 // Check numbers, percentages, currency metrics
                 val metricRegex = Regex("(\\d+%|\\$\\d+[kKmMbB]?|\\d+\\+?\\s*(users|clients|projects|ms|sec|x|times))")
-                if (metricRegex.containsMatchIn(fullText)) {
-                    quantifiedCount++
+                val matches = metricRegex.findAll(fullText).count()
+                if (matches > 0) {
+                    quantifiedCount += matches
                 }
             }
 

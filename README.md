@@ -1,5 +1,6 @@
 # CareerForge AI — Next-Generation AI Resume Builder & Career Suite
 
+[![Android CI](https://github.com/sanjayBairw/CareerForgeAI/actions/workflows/android.yml/badge.svg)](https://github.com/sanjayBairw/CareerForgeAI/actions)
 [![Platform](https://img.shields.io/badge/Platform-Android-3DDC84.svg?style=flat&logo=android)](https://www.android.com/)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin%202.0-7F52FF.svg?style=flat&logo=kotlin)](https://kotlinlang.org/)
 [![Architecture](https://img.shields.io/badge/Architecture-MVVM%20%2B%20Clean-0284C7.svg?style=flat)](#architecture)
@@ -35,6 +36,7 @@
 * **Direct Vector Rendering**: Resumes are drawn using Android's native `android.graphics.pdf.PdfDocument` canvas — 100% extractable Unicode text, not low-res raster images.
 * **Clickable Hyperlinks**: Direct `mailto:`, LinkedIn, GitHub, and Portfolio URLs embedded into the document stream.
 * **Multi-Page & Page Breaks**: Intelligent element flow preventing orphaned section headers.
+* **Plain Text & Markdown Export**: 1-click clipboard copy formatted for quick pasting into enterprise applicant portals (Workday, Taleo, Greenhouse).
 * **Zero Dependency on WebViews or Cloud APIs**: Generates print-ready A4/Letter PDFs in milliseconds without internet access.
 
 ### 3. 🎨 Executive Template Architecture
@@ -72,6 +74,34 @@
 | **PDF Rendering** | `android.graphics.pdf.PdfRenderer` |
 | **Window Insets** | Android 15+ Edge-to-Edge (`ViewCompat.setOnApplyWindowInsetsListener`) |
 | **Build Tooling** | Gradle 8.9 / AGP 8.7.3, KSP |
+
+---
+
+## 🏗️ Architecture & Data Flow
+
+```
+┌────────────────────────────────────────────────────────┐
+│               UI Layer (Material Design 3)             │
+│   Activities, Fragments, Edge-to-Edge Window Insets    │
+└───────────────────────────┬────────────────────────────┘
+                            │ StateFlow / LiveData
+┌───────────────────────────▼────────────────────────────┐
+│                  ViewModel Layer (MVVM)                │
+│    ResumeViewModel, AtsViewModel, JobApplicationVM     │
+└─────────────┬─────────────────────────────┬────────────┘
+              │                             │
+┌─────────────▼──────────────┐ ┌────────────▼────────────┐
+│      Domain & Exporters    │ │    Repository Layer     │
+│  - Native PdfGenerator     │ │  ResumeRepository       │
+│  - TextResumeExporter      │ │  JobApplicationRepository│
+│  - AtsAnalyzer (0-100)     │ │  UserRepository         │
+└────────────────────────────┘ └────────────┬────────────┘
+                                            │ Coroutines
+                               ┌────────────▼────────────┐
+                               │   Local SQLite (Room)   │
+                               │   100% Offline-First    │
+                               └─────────────────────────┘
+```
 
 ---
 

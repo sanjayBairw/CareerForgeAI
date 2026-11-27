@@ -60,6 +60,10 @@ class ResumePreviewActivity : AppCompatActivity() {
             sharePdf()
         }
 
+        binding.btnCopyPlainText.setOnClickListener {
+            copyPlainTextResume()
+        }
+
         binding.btnPreviewEdit.setOnClickListener {
             val intent = Intent(this, ResumeEditorActivity::class.java).apply {
                 putExtra(ResumeEditorActivity.EXTRA_RESUME_ID, resumeId)
@@ -173,6 +177,14 @@ class ResumePreviewActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun copyPlainTextResume() {
+        val text = com.pynexia.resumebuilder.pdf.TextResumeExporter.export(resumeData)
+        val clipboard = getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+        val clip = android.content.ClipData.newPlainText("Resume Text", text)
+        clipboard.setPrimaryClip(clip)
+        Toast.makeText(this, "Resume copied as plain text! Ready for job portals.", Toast.LENGTH_LONG).show()
     }
 
     companion object {
