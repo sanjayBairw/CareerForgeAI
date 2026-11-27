@@ -35,13 +35,35 @@ class TemplateAdapter(
             selectedColor = template.defaultColor
             binding.tvTemplateName.text = template.name
             binding.tvTemplateAtsBadge.text = template.atsRating
+            binding.tvTemplateCategory.text = template.category
+            binding.tvTemplateLayoutTag.text = template.layoutTag
             binding.tvTemplateDesc.text = template.description
 
-            binding.colorDotBlue.setOnClickListener { selectedColor = "#2563EB" }
-            binding.colorDotEmerald.setOnClickListener { selectedColor = "#059669" }
-            binding.colorDotPurple.setOnClickListener { selectedColor = "#7C3AED" }
-            binding.colorDotCrimson.setOnClickListener { selectedColor = "#DC2626" }
-            binding.colorDotSlate.setOnClickListener { selectedColor = "#0F172A" }
+            val colorDots = listOf(
+                binding.colorDotBlue to "#2563EB",
+                binding.colorDotEmerald to "#059669",
+                binding.colorDotPurple to "#7C3AED",
+                binding.colorDotCrimson to "#DC2626",
+                binding.colorDotSlate to "#0F172A",
+                binding.colorDotAmber to "#D97706"
+            )
+
+            fun updateDotSelection(activeColor: String) {
+                selectedColor = activeColor
+                colorDots.forEach { (view, color) ->
+                    view.alpha = if (color.equals(activeColor, ignoreCase = true)) 1.0f else 0.5f
+                    view.scaleX = if (color.equals(activeColor, ignoreCase = true)) 1.25f else 1.0f
+                    view.scaleY = if (color.equals(activeColor, ignoreCase = true)) 1.25f else 1.0f
+                }
+            }
+
+            updateDotSelection(selectedColor)
+
+            colorDots.forEach { (view, color) ->
+                view.setOnClickListener {
+                    updateDotSelection(color)
+                }
+            }
 
             binding.btnUseTemplate.setOnClickListener {
                 onUseTemplateClick(template, selectedColor)

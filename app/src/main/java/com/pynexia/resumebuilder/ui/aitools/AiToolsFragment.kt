@@ -44,7 +44,7 @@ class AiToolsFragment : Fragment() {
         }
 
         binding.cardAiLinkedinOptimizer.setOnClickListener {
-            startActivity(Intent(requireContext(), AtsAnalyzerActivity::class.java))
+            startActivity(Intent(requireContext(), LinkedInOptimizerActivity::class.java))
         }
     }
 

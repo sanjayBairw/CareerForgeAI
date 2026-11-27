@@ -39,16 +39,25 @@
 * **Plain Text & Markdown Export**: 1-click clipboard copy formatted for quick pasting into enterprise applicant portals (Workday, Taleo, Greenhouse).
 * **Zero Dependency on WebViews or Cloud APIs**: Generates print-ready A4/Letter PDFs in milliseconds without internet access.
 
-### 3. 🎨 Executive Template Architecture
-* **6 Specialized Layout Categories**: Modern Pro, Corporate Executive, Minimalist, Academic / Fresher, Tech Software Developer, and Creative.
-* **Palette & Typography Switcher**: Custom color theming (Electric Sapphire, Emerald, Obsidian, Purple, Crimson, Amber) and typography controls.
-* **Dual Theme Engine**: Seamless support for Executive Slate (Light Mode) and OLED Midnight (Dark Mode) with one-tap toggle.
+### 3. 🎨 8 Genuinely Distinct Template Architectures
+* **8 Fully Unique Layout Engines**:
+  1. **Modern Professional**: 2-column layout with slate accent sidebar, initials/QR code badge, and right-hand career progression.
+  2. **Minimalist Clean**: 1-column linear ATS priority format with hairline dividers and standardized headers (99% ATS parsing rate).
+  3. **Corporate Executive**: Full-width dark colored header banner with serif typography and bordered strategic outcomes callout box.
+  4. **Software Developer**: Engineered for tech with dedicated Technical Skills Matrix, tech stack chips `[Kotlin • Compose • Room]`, and GitHub links.
+  5. **Creative Portfolio**: Asymmetric split layout with vibrant theme accent sidebar, rounded skill pill tags, and portfolio showcase cards.
+  6. **Academic & Fresher**: Prioritizes Education, GPA honors, and Capstone Projects at the top — ideal for students and freshers.
+  7. **Nordic Clean**: Scandinavian dual-column architectural design with thin vertical guide and compact micro-spacing for high data density.
+  8. **Chronological Timeline**: Visual career track with milestone node circles connecting roles, companies, and dates along a vertical axis.
+* **Live In-Preview Template Switcher**: Switch templates and accent color palettes with 1 tap directly in the PDF preview screen with instantaneous live re-rendering.
+* **Palette & Typography Engine**: 6 executive color themes (Electric Sapphire, Emerald, Obsidian, Purple, Crimson, Amber) with Serif, Sans-Serif, and Monospace typography.
 
-### 4. 🤖 AI Career Accelerator Suite
-* **AI Bullet Point Polish**: Enhances weak job descriptions into impact-driven action statements.
+### 4. 🤖 AI Career Accelerator Suite & LinkedIn Optimizer
+* **LinkedIn & Profile Optimizer**: Generates 4 styles of high-impact LinkedIn headlines (SEO/Recruiter, Executive Leadership, Metric-Driven, Creative), a high-converting storytelling "About" summary, and top searchable hashtags with 1-click clipboard copying.
+* **AI Bullet Point Polish**: Enhances weak job descriptions into impact-driven action statements using the Google XYZ formula.
 * **Cover Letter Generator**: Auto-tailors professional cover letters from resume metadata and specific target company roles.
 * **Interview Question Prep**: Simulates role-specific behavioral (STAR method) and technical interview questions.
-* **Custom AI Endpoint**: Works fully offline with local heuristics by default, with optional bring-your-own-key (BYOK) OpenAI/Gemini API integration.
+* **Privacy-Preserving Heuristics**: Works 100% offline with local heuristics by default, with optional bring-your-own-key (BYOK) OpenAI/Gemini API integration.
 
 ### 5. 💼 Job Application Tracker
 * **Application Lifecycle Pipeline**: Track opportunities across *Interested*, *Applied*, *Assessment*, *Interview*, *Offer*, and *Rejected*.

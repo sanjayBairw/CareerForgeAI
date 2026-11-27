@@ -62,6 +62,96 @@
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <!-- Quick Live Template & Color Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_templates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:singleSelection="true">
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Palette Accent:"
+                android:textColor="@color/text_tertiary"
+                android:textSize="11sp" />
+
+            <View
+                android:id="@+id/preview_dot_blue"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_blue" />
+
+            <View
+                android:id="@+id/preview_dot_emerald"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_emerald" />
+
+            <View
+                android:id="@+id/preview_dot_purple"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_purple" />
+
+            <View
+                android:id="@+id/preview_dot_crimson"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_crimson" />
+
+            <View
+                android:id="@+id/preview_dot_slate"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_slate" />
+
+            <View
+                android:id="@+id/preview_dot_amber"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_color_dot"
+                android:backgroundTint="@color/theme_amber" />
+        </LinearLayout>
+    </LinearLayout>
+
     <!-- PDF Page View Carousel / ViewPager -->
     <FrameLayout
         android:layout_width="match_parent"

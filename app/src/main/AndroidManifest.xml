@@ -60,6 +60,10 @@
             android:exported="true" />
 
         <activity
+            android:name=".ui.aitools.LinkedInOptimizerActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="true" />
 
