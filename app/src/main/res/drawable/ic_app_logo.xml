@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Rounded Background Container -->
+    <path android:pathData="M12,4 h72 c6.6,0 12,5.4 12,12 v64 c0,6.6 -5.4,12 -12,12 h-72 c-6.6,0 -12,-5.4 -12,-12 v-64 c0,-6.6 5.4,-12 12,-12 z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="10"
+                android:startY="10"
+                android:endX="86"
+                android:endY="86"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#0B0F19" />
+                <item android:offset="0.5" android:color="#0F172A" />
+                <item android:offset="1.0" android:color="#1E3A8A" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Document Sheet Body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,22 h36 c2.76,0 5,2.24 5,5 v44 c0,2.76 -2.24,5 -5,5 h-36 c-2.76,0 -5,-2.24 -5,-5 v-44 c0,-2.76 2.24,-5 5,-5 z" />
+
+    <!-- Document Header / Name Bar -->
+    <path
+        android:fillColor="#1D4ED8"
+        android:pathData="M36,30 h24 c1.1,0 2,0.9 2,2 v0.5 c0,1.1 -0.9,2 -2,2 h-24 c-1.1,0 -2,-0.9 -2,-2 v-0.5 c0,-1.1 0.9,-2 2,-2 z" />
+
+    <!-- Content Line 1 (Headline) -->
+    <path
+        android:fillColor="#3B82F6"
+        android:pathData="M36,39 h16 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-16 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 2 (Work Experience) -->
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M36,46 h22 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-22 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 3 (Bullet point) -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M36,52 h25 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-25 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 4 (Skills) -->
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M36,58 h18 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-18 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- AI Sparkle Star (Top Right) -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M68,17 L69.5,23 L75.5,24.5 L69.5,26 L68,32 L66.5,26 L60.5,24.5 L66.5,23 Z" />
+
+    <!-- Career Growth / ATS Badge (Bottom Right Circle) -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M63,65 m -11,0 a 11,11 0 1,0 22,0 a 11,11 0 1,0 -22,0" />
+
+    <!-- Upward Growth Arrow inside badge -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M59,68 L65.5,61.5 L65.5,65.2 C65.5,65.6 65.9,66 66.3,66 C66.7,66 67.1,65.6 67.1,65.2 L67.1,59.8 C67.1,59.4 66.7,59 66.3,59 L60.9,59 C60.5,59 60.1,59.4 60.1,59.8 C60.1,60.2 60.5,60.6 60.9,60.6 L64.3,60.6 L57.8,66.8 C57.4,67.2 57.4,67.7 57.8,68.1 C58.2,68.5 58.6,68.4 59,68 Z" />
+
+</vector>

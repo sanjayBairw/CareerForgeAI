@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Document Sheet Shadow / Glow -->
+    <path
+        android:fillColor="#151D4ED8"
+        android:pathData="M32,27 h44 c2.76,0 5,2.24 5,5 v50 c0,2.76 -2.24,5 -5,5 h-44 c-2.76,0 -5,-2.24 -5,-5 v-50 c0,-2.76 2.24,-5 5,-5 z" />
+
+    <!-- Document Sheet Body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,26 h40 c2.76,0 5,2.24 5,5 v50 c0,2.76 -2.24,5 -5,5 h-40 c-2.76,0 -5,-2.24 -5,-5 v-50 c0,-2.76 2.24,-5 5,-5 z" />
+
+    <!-- Document Header / Name Bar -->
+    <path
+        android:fillColor="#1D4ED8"
+        android:pathData="M40,34 h26 c1.1,0 2,0.9 2,2 v1 c0,1.1 -0.9,2 -2,2 h-26 c-1.1,0 -2,-0.9 -2,-2 v-1 c0,-1.1 0.9,-2 2,-2 z" />
+
+    <!-- Content Line 1 (Headline) -->
+    <path
+        android:fillColor="#3B82F6"
+        android:pathData="M40,43 h18 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-18 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 2 (Work Experience) -->
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M40,50 h24 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-24 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 3 (Bullet point) -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M40,56 h28 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-28 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- Content Line 4 (Skills) -->
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M40,62 h20 c0.8,0 1.5,0.7 1.5,1.5 v0 c0,0.8 -0.7,1.5 -1.5,1.5 h-20 c-0.8,0 -1.5,-0.7 -1.5,-1.5 v0 c0,-0.8 0.7,-1.5 1.5,-1.5 z" />
+
+    <!-- AI Sparkle Star (Top Right) -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M76,21 L77.5,27 L83.5,28.5 L77.5,30 L76,36 L74.5,30 L68.5,28.5 L74.5,27 Z" />
+
+    <!-- Mini Star Sparkle -->
+    <path
+        android:fillColor="#60A5FA"
+        android:pathData="M83,37 L83.8,40.2 L87,41 L83.8,41.8 L83,45 L82.2,41.8 L79,41 L82.2,40.2 Z" />
+
+    <!-- Career Growth / ATS Badge (Bottom Right Circle) -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M70,70 m -12,0 a 12,12 0 1,0 24,0 a 12,12 0 1,0 -24,0" />
+
+    <!-- Upward Growth Arrow inside badge -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M65.5,73.5 L72.5,66.5 L72.5,70.5 C72.5,71 73,71.5 73.5,71.5 C74,71.5 74.5,71 74.5,70.5 L74.5,64.5 C74.5,64 74,63.5 73.5,63.5 L67.5,63.5 C67,63.5 66.5,64 66.5,64.5 C66.5,65 67,65.5 67.5,65.5 L71.2,65.5 L64.2,72.2 C63.8,72.6 63.8,73.2 64.2,73.6 C64.6,74 65.1,73.9 65.5,73.5 Z" />
+
+</vector>
